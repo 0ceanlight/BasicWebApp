@@ -20,7 +20,7 @@ public class QueryProcessor {
             return "The most excellent technical Uni ever.";
         } else if (query.contains("garching") || query.contains("mensa")) {
             return "GOTO mensa Garching!";
-        } else if (query.contains("plus") | query.contains("add")) {
+        } else if (query.contains("plus") || query.contains("add")) {
             return handleAddition(query);
         } else if (query.contains("name")) {
            return "MyTeam";
