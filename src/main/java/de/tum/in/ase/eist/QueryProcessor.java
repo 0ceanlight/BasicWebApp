@@ -24,6 +24,8 @@ public class QueryProcessor {
             return handleAddition(query);
         } else if (query.contains("mul") || query.contains("times")) {
             return handleMul(query);
+        } else if (query.contains("banana")) {
+            return "yellow";
         } else if (query.contains("name")) {
            return "MyTeam";
         } else { // TODO extend the programm here
