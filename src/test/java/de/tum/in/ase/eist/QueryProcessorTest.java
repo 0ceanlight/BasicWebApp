@@ -23,6 +23,14 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testKnowsAboutTUM() {
+		String actual = queryProcessor.process("TUM");
+		if (!actual.contains("Uni")) {
+			fail("The QueryProcessor does not know about TUM.");
+		}
+	}
+
+	@Test
 	void isNotCaseSensitive() {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {
