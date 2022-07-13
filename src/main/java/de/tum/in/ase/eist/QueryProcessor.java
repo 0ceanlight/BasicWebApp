@@ -2,6 +2,11 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.thymeleaf.util.StringUtils.indexOf;
+
 @Service
 public class QueryProcessor {
 
@@ -15,11 +20,36 @@ public class QueryProcessor {
             return "The most excellent technical Uni ever.";
         } else if (query.contains("garching") || query.contains("mensa")) {
             return "GOTO mensa Garching!";
+        } else if (query.contains("plus") | query.contains("add")) {
+            return handleAddition(query);
         } else if (query.contains("name")) {
            return "MyTeam";
         } else { // TODO extend the programm here
 
             return "";
         }
+    }
+
+    public static String handleAddition(String query) {
+        int n1 = getNumber(query);
+        int mod = query.indexOf("" + n1);
+                mod += ("" + n1).length();
+        int n2 = getNumber(query.substring(mod));
+        if (n1 > 0 || n2 > 0) {
+            return "" + (n1 + n2);
+        }
+
+        return "";
+    }
+
+    public static int getNumber(String str) {
+        Matcher matcher = Pattern.compile("\\d+").matcher(str);
+        matcher.find();
+        int i = Integer.valueOf(matcher.group());
+        return i;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(handleAddition("one 11 plus 45"));
     }
 }
