@@ -15,6 +15,22 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testCanAdd() {
+		String actual = queryProcessor.process("1 plus 3");
+		if (!actual.contains("4")) {
+			fail("The QueryProcessor has not been to preschool yet");
+		}
+	}
+
+	@Test
+	void testCanMul() {
+		String actual = queryProcessor.process("1 times 3");
+		if (!actual.contains("3")) {
+			fail("The QueryProcessor has not been to preschool yet");
+		}
+	}
+
+	@Test
 	void testKnowsAboutShakespeare() {
 		String actual = queryProcessor.process("Shakespeare");
 		if (!actual.contains("playwright")) {

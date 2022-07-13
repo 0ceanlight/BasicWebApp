@@ -22,7 +22,7 @@ public class QueryProcessor {
             return "GOTO mensa Garching!";
         } else if (query.contains("plus") || query.contains("add")) {
             return handleAddition(query);
-        } else if (query.contains("mul")) {
+        } else if (query.contains("mul") || query.contains("times")) {
             return handleMul(query);
         } else if (query.contains("name")) {
            return "MyTeam";
