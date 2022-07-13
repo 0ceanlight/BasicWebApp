@@ -22,12 +22,26 @@ public class QueryProcessor {
             return "GOTO mensa Garching!";
         } else if (query.contains("plus") || query.contains("add")) {
             return handleAddition(query);
+        } else if (query.contains("mul")) {
+            return handleMul(query);
         } else if (query.contains("name")) {
            return "MyTeam";
         } else { // TODO extend the programm here
 
             return "";
         }
+    }
+
+    public static String handleMul(String query) {
+        int n1 = getNumber(query);
+        int mod = query.indexOf("" + n1);
+        mod += ("" + n1).length();
+        int n2 = getNumber(query.substring(mod));
+        if (n1 > 0 || n2 > 0) {
+            return "" + (n1 * n2);
+        }
+
+        return "invalid";
     }
 
     public static String handleAddition(String query) {
@@ -39,7 +53,7 @@ public class QueryProcessor {
             return "" + (n1 + n2);
         }
 
-        return "";
+        return "invalid";
     }
 
     public static int getNumber(String str) {
